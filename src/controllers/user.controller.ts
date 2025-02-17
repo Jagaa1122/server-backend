@@ -47,3 +47,16 @@ export const Profile: RequestHandler = (req, res) => {
 
   res.status(200).json({ idFinder, massage: "Success" });
 };
+
+export const Update: RequestHandler = (req, res) => {
+  const { _id } = req.body;
+  const user = users.find((user) => user._id === _id);
+
+  if (!user) {
+    res.send("No profile found");
+    return;
+  }
+
+  Object.assign(user, req.body);
+  res.send({ data: user});
+};

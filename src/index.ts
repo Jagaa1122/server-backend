@@ -3,13 +3,14 @@ import cors from "cors";
 
 import bodyParser from "body-parser";
 import { userRoute } from "./routes/user.route";
+import { productRoute } from "./routes/product.route";
 
 const app = express();
 const port = 9999;
 app.use(bodyParser.json());
 
 app.use("/user", userRoute);
-// const userRoute = Router();
+app.use("/product", productRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

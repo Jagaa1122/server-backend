@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { Profile, Login, Register } from "../controllers/user.controller";
+import { Profile, Login, Register, Update } from "../controllers/user.controller";
 
 const userRoute = Router();
 userRoute
   .post("/register", Register)
   .post("/login", Login)
-  .post("/Profile", Profile);
-
+  .post("/profile", Profile)
+  .post("/update", Update);
 export { userRoute };
