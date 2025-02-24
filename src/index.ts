@@ -1,23 +1,8 @@
 import express from "express";
-<<<<<<< HEAD
 import { getMovies } from "./database/mongodb";
 
 const app = express();
 const port = 9999;
-=======
-import cors from "cors";
-
-import bodyParser from "body-parser";
-import { userRoute } from "./routes/user.route";
-import { productRoute } from "./routes/product.route";
-
-const app = express();
-const port = 9999;
-app.use(bodyParser.json());
-
-app.use("/user", userRoute);
-app.use("/product", productRoute);
->>>>>>> c845910f76fad51167eca666b5e9679b55fa74f8
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
