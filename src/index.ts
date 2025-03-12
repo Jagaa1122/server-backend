@@ -1,23 +1,17 @@
 import express from "express";
-import { getMovies } from "./database/createStudent";
+import { configDotenv } from "dotenv";
+import bodyParser from "body-parser";
 
+import random from "../src/food/Router/foodRouters";
+import { connectDataBase } from "./food/DB/database";
 const app = express();
-const port = 9999;
+app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+configDotenv(); //SUULGAD DUUDAJ OGNO
+connectDataBase(); // DB AASA AVNA
+const port = process.env.PORT;
+app.use("/food", random); //<1 GANTS APP.USE  NER NI YUCH BAIJ BOLNO
 
-app.post("/students", async (req, res) => {
-  try {
-    // const { year, imdb } = await req.query;
-    const movies = await getMovies();
-    res.status(201).json({ message: "success", movies: movies });
-  } catch (error) {
-    res.status(500).json({ message: "error", error });
-  }
-});
-
-app.listen(9999, () => {
-  console.log(`Server running on port ${9999}`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
