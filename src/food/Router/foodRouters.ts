@@ -7,7 +7,7 @@ import {
 } from "../Controller/foodController";
 const route = express.Router();
 route.post("/", addFood);
-route.get("/:id", getFood);
+route.get("/", getFood);
 route.delete("/:id", DeleteFood);
 route.put("/:id", putFood); //5
 export default route;
