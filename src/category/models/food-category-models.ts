@@ -1,9 +1,11 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose"; // Added `Document` for TypeScript type safety
 
-type FoodCategorySchemaType = {
+// Extend Document to ensure MongoDB document properties are included
+interface FoodCategorySchemaType extends Document {
   categoryName: string;
-};
+}
 
+// Define Schema
 const FoodCategorySchema: Schema = new Schema(
   {
     categoryName: {
@@ -15,7 +17,10 @@ const FoodCategorySchema: Schema = new Schema(
     timestamps: true,
   }
 );
+
+// Explicitly set the collection name as "foodcategories"
 export default mongoose.model<FoodCategorySchemaType>(
   "FoodCategory",
-  FoodCategorySchema
+  FoodCategorySchema,
+  "foodcategories" // Added explicit collection name
 );
