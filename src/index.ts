@@ -5,6 +5,7 @@ import { connectDataBase } from "./food/DB/database";
 import categoryRouter from "./category/routes/user.route";
 import route from "../src/food/Router/foodRouters";
 import cors from "cors";
+import userRoute from "./food/Router/auth.route";
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -14,6 +15,7 @@ connectDataBase(); // DB AASA AVNA
 const port = process.env.PORT;
 app.use("/category", categoryRouter); //<1 GANTS APP.USE  NER NI YUCH BAIJ BOLNO
 app.use("/food", route); //<1 GANTS APP.USE  NER NI YUCH BAIJ BOLNO
+app.use("/auth", userRoute);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

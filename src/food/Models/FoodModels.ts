@@ -11,10 +11,10 @@ interface IFood {
 const Foods: Schema = new Schema(
   {
     FoodName: { type: String, required: true },
-    price: { type: Number, require: true },
-    image: { type: String, require: true },
-    ingredients: { type: Number, require: true },
-    category: { type: Object, rel: "FoodCategory", require: true },
+    price: { type: Number, required: true },
+    image: { type: String, required: true },
+    ingredients: { type: Number, required: true },
+    category: { type: Object, rel: "FoodCategory", required: true },
   },
   { timestamps: true }
 );
